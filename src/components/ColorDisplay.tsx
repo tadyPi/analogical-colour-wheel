@@ -78,7 +78,7 @@ const ColorDisplay: React.FC<ColorDisplayProps> = ({ selectedColor, analogousCol
   return (
     <div className="space-y-2">
       {/* Selected Color */}
-      <div className={`backdrop-blur-sm rounded-xl p-4 border shadow-xl ${
+      <div className={`backdrop-blur-sm rounded-xl p-4 border shadow-xl max-w-md mx-auto xl:max-w-none ${
         theme === 'dark' 
           ? 'bg-gray-800/95 border-gray-700' 
           : 'bg-white/90 border-white/50 shadow-blue-200/50'
@@ -91,7 +91,7 @@ const ColorDisplay: React.FC<ColorDisplayProps> = ({ selectedColor, analogousCol
 
       {/* Analogous Colors */}
       {analogousColors.length > 0 && (
-        <div className={`backdrop-blur-sm rounded-2xl p-6 border shadow-xl ${
+        <div className={`backdrop-blur-sm rounded-2xl p-6 border shadow-xl max-w-md mx-auto xl:max-w-none ${
           theme === 'dark' 
             ? 'bg-gray-800/95 border-gray-700' 
             : 'bg-white/90 border-white/50 shadow-blue-200/50'
