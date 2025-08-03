@@ -26,11 +26,11 @@ function App() {
         : 'bg-gradient-to-br from-blue-50 to-indigo-100 text-gray-900'
     }`}>
       {/* Header */}
-      <header className="p-6 text-center relative">
+      <header className="pt-8 pb-6 px-6 text-center relative">
         <div className="fixed top-4 right-4 z-50">
           <ThemeToggle />
         </div>
-        <h1 className={`hidden lg:block text-2xl md:text-3xl font-normal ${
+        <h1 className={`hidden lg:block text-2xl md:text-3xl font-normal mt-4 ${
           theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
         }`}>
           Click or click and drag to explore harmonious color combinations
@@ -38,7 +38,7 @@ function App() {
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 container mx-auto px-4 py-4 pb-8">
+      <main className="flex-1 container mx-auto px-4 pt-6 pb-8">
         <div className="flex flex-col xl:flex-row items-start justify-center gap-2 max-w-5xl mx-auto">
         <div className="max-w-5xl mx-auto">
           {/* Desktop Layout (xl and above) */}
