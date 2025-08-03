@@ -14,9 +14,31 @@ html.light {
   color-scheme: light;
 }
 
+/* Force dark mode styles when dark class is present */
+html.dark,
+html.dark * {
+  color-scheme: dark;
+}
+
+html.light,
+html.light * {
+  color-scheme: light;
+}
+
 /* Smooth transitions for theme changes */
-* {
-  transition-property: background-color, border-color, color, fill, stroke;
+*,
+*::before,
+*::after {
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 200ms;
+}
+
+/* Debug styles to verify dark mode is working */
+html.dark {
+  background-color: rgb(17 24 39) !important;
+}
+
+html.light {
+  background-color: rgb(249 250 251) !important;
 }

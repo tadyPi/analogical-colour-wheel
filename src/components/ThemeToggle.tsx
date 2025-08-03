@@ -4,12 +4,24 @@ import { useTheme } from '../contexts/ThemeContext';
 const ThemeToggle: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
 
+  // Debug logging
+  console.log('ThemeToggle current theme:', theme);
+
   const isDark = theme === 'dark';
+
+  const handleClick = () => {
+    console.log('Theme toggle clicked, current theme:', theme);
+    toggleTheme();
+  };
 
   return (
     <button
-      onClick={toggleTheme}
-      className="inline-flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 bg-white/95 dark:bg-gray-800/95 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700/80 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 transition-all duration-200 shadow-sm"
+      onClick={handleClick}
+      className={`inline-flex items-center gap-2 px-3 py-2 text-sm font-medium border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-200 shadow-sm ${
+        isDark
+          ? 'text-gray-200 bg-gray-800/95 border-gray-600 hover:bg-gray-700/80 focus:ring-offset-gray-900'
+          : 'text-gray-700 bg-white/95 border-gray-300 hover:bg-gray-50 focus:ring-offset-white'
+      }`}
       aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
       title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
     >

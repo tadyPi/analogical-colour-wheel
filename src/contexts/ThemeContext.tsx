@@ -17,31 +17,49 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
   storageKey = 'color-wheel-theme',
 }) => {
   const [theme, setTheme] = useState<Theme>(() => {
-    if (typeof window !== 'undefined') {
+    // Check if we're in the browser
+    if (typeof window === 'undefined') return defaultTheme;
+    
+    try {
       const stored = localStorage.getItem(storageKey) as Theme;
       return stored === 'dark' || stored === 'light' ? stored : defaultTheme;
+    } catch {
+      return defaultTheme;
     }
-    return defaultTheme;
   });
 
   useEffect(() => {
-    const root = window.document.documentElement;
+    const root = document.documentElement;
     
     // Remove both classes first
     root.classList.remove('light', 'dark');
-    // Add the current theme
+    
+    // Add the current theme class
     root.classList.add(theme);
     
+    // Also set the data attribute for additional targeting
+    root.setAttribute('data-theme', theme);
+    
     // Save to localStorage
-    localStorage.setItem(storageKey, theme);
+    try {
+      localStorage.setItem(storageKey, theme);
+    } catch (error) {
+      console.warn('Failed to save theme to localStorage:', error);
+    }
+    
+    // Debug logging
+    console.log('Theme applied:', theme, 'Classes:', root.classList.toString());
   }, [theme, storageKey]);
 
   const handleSetTheme = (newTheme: Theme) => {
+    console.log('Setting theme to:', newTheme);
     setTheme(newTheme);
   };
 
   const toggleTheme = () => {
-    setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    console.log('Toggling theme from', theme, 'to', newTheme);
+    handleSetTheme(newTheme);
   };
 
   const value: ThemeContextType = {

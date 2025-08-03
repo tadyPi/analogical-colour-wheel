@@ -1,10 +1,12 @@
 import { useState } from 'react'
+import { useTheme } from './contexts/ThemeContext'
 import ColorWheel from './components/ColorWheel'
 import ColorDisplay from './components/ColorDisplay'
 import ThemeToggle from './components/ThemeToggle'
 import type { Color } from './types/color'
 
 function App() {
+  const { theme } = useTheme()
   const [selectedColor, setSelectedColor] = useState<Color>({
     hue: 0,
     saturation: 100,
@@ -14,14 +16,23 @@ function App() {
 
   const [analogousColors, setAnalogousColors] = useState<Color[]>([])
 
+  // Debug logging
+  console.log('App component theme:', theme)
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-gray-100 transition-all duration-300">
+    <div className={`min-h-screen transition-all duration-300 ${
+      theme === 'dark' 
+        ? 'bg-gradient-to-br from-gray-900 to-gray-800 text-gray-100' 
+        : 'bg-gradient-to-br from-gray-50 to-gray-100 text-gray-900'
+    }`}>
       {/* Header */}
       <header className="p-6 text-center relative">
         <div className="absolute top-4 right-4">
           <ThemeToggle />
         </div>
-        <h1 className="hidden lg:block text-2xl md:text-3xl font-normal text-gray-600 dark:text-gray-400">
+        <h1 className={`hidden lg:block text-2xl md:text-3xl font-normal ${
+          theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
+        }`}>
           Click or click and drag to explore harmonious color combinations
         </h1>
       </header>
@@ -32,8 +43,14 @@ function App() {
 
           {/* Color Wheel Section */}
           <div className="w-full xl:w-auto">
-            <div className="bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm rounded-xl p-4 border border-gray-200 dark:border-gray-700 max-w-md mx-auto shadow-lg">
-              <h2 className="text-xl font-medium mb-4 text-center text-gray-800 dark:text-gray-100">Interactive Color Wheel</h2>
+            <div className={`backdrop-blur-sm rounded-xl p-4 border max-w-md mx-auto shadow-lg ${
+              theme === 'dark' 
+                ? 'bg-gray-800/95 border-gray-700' 
+                : 'bg-white/95 border-gray-200'
+            }`}>
+              <h2 className={`text-xl font-medium mb-4 text-center ${
+                theme === 'dark' ? 'text-gray-100' : 'text-gray-800'
+              }`}>Interactive Color Wheel</h2>
               <div className="w-full aspect-square max-w-[350px] mx-auto">
                 <ColorWheel
                   selectedColor={selectedColor}
@@ -55,7 +72,9 @@ function App() {
       </main>
 
       {/* Footer */}
-      <footer className="p-6 text-center text-gray-500 dark:text-gray-400">
+      <footer className={`p-6 text-center ${
+        theme === 'dark' ? 'text-gray-400' : 'text-gray-500'
+      }`}>
         <p>Built with React, TypeScript, Vite, and Tailwind CSS</p>
       </footer>
     </div>
