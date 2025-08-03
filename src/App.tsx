@@ -30,7 +30,6 @@ function App() {
             Click or drag to explore harmonious color combinations
           </p>
         </div>
-        </h1>
       </header>
 
       {/* Main Content */}
