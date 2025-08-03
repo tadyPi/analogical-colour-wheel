@@ -31,7 +31,7 @@ const ColorDisplay: React.FC<ColorDisplayProps> = ({ selectedColor, analogousCol
     <div className={`rounded-xl p-4 border transition-all shadow-sm ${
       theme === 'dark' 
         ? 'bg-gray-700/95 border-gray-600 hover:border-gray-500' 
-        : 'bg-white/95 border-gray-200 hover:border-gray-300'
+        : 'bg-white/80 border-gray-300 hover:border-gray-400'
     } ${isMain ? (theme === 'dark' ? 'ring-2 ring-blue-400' : 'ring-2 ring-blue-500') : ''}`}>
       <div className="flex items-center gap-4">
         <div
@@ -78,10 +78,10 @@ const ColorDisplay: React.FC<ColorDisplayProps> = ({ selectedColor, analogousCol
   return (
     <div className="space-y-2">
       {/* Selected Color */}
-      <div className={`backdrop-blur-sm rounded-xl p-4 border shadow-lg ${
+      <div className={`backdrop-blur-sm rounded-xl p-4 border shadow-xl ${
         theme === 'dark' 
           ? 'bg-gray-800/95 border-gray-700' 
-          : 'bg-white/95 border-gray-200'
+          : 'bg-white/90 border-white/50 shadow-blue-200/50'
       }`}>
         <h2 className={`text-2xl font-semibold mb-4 text-center ${
           theme === 'dark' ? 'text-gray-100' : 'text-gray-800'
@@ -91,10 +91,10 @@ const ColorDisplay: React.FC<ColorDisplayProps> = ({ selectedColor, analogousCol
 
       {/* Analogous Colors */}
       {analogousColors.length > 0 && (
-        <div className={`backdrop-blur-sm rounded-2xl p-6 border shadow-lg ${
+        <div className={`backdrop-blur-sm rounded-2xl p-6 border shadow-xl ${
           theme === 'dark' 
             ? 'bg-gray-800/95 border-gray-700' 
-            : 'bg-white/95 border-gray-200'
+            : 'bg-white/90 border-white/50 shadow-blue-200/50'
         }`}>
           <h2 className={`text-2xl font-semibold mb-4 text-center ${
             theme === 'dark' ? 'text-gray-100' : 'text-gray-800'
@@ -113,10 +113,10 @@ const ColorDisplay: React.FC<ColorDisplayProps> = ({ selectedColor, analogousCol
 
       {/* Color Palette Preview */}
       {analogousColors.length > 0 && (
-        <div className={`backdrop-blur-sm rounded-2xl p-6 border shadow-lg ${
+        <div className={`backdrop-blur-sm rounded-2xl p-6 border shadow-xl ${
           theme === 'dark' 
             ? 'bg-gray-800/95 border-gray-700' 
-            : 'bg-white/95 border-gray-200'
+            : 'bg-white/90 border-white/50 shadow-blue-200/50'
         }`}>
           <h2 className={`text-2xl font-semibold mb-4 text-center ${
             theme === 'dark' ? 'text-gray-100' : 'text-gray-800'
@@ -164,10 +164,10 @@ const ColorDisplay: React.FC<ColorDisplayProps> = ({ selectedColor, analogousCol
       )}
 
       {/* Usage Tips */}
-      <div className={`backdrop-blur-sm rounded-2xl p-6 border shadow-lg ${
+      <div className={`backdrop-blur-sm rounded-2xl p-6 border shadow-xl ${
         theme === 'dark' 
           ? 'bg-gray-800/95 border-gray-700' 
-          : 'bg-white/95 border-gray-200'
+          : 'bg-white/90 border-white/50 shadow-blue-200/50'
       }`}>
         <h3 className={`text-lg font-semibold mb-3 ${
           theme === 'dark' ? 'text-gray-100' : 'text-gray-800'

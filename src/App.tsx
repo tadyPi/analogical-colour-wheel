@@ -23,7 +23,7 @@ function App() {
     <div className={`min-h-screen transition-all duration-300 ${
       theme === 'dark' 
         ? 'bg-gradient-to-br from-gray-900 to-gray-800 text-gray-100' 
-        : 'bg-gradient-to-br from-gray-50 to-gray-100 text-gray-900'
+        : 'bg-gradient-to-br from-blue-50 to-indigo-100 text-gray-900'
     }`}>
       {/* Header */}
       <header className="p-6 text-center relative">
@@ -43,10 +43,10 @@ function App() {
 
           {/* Color Wheel Section */}
           <div className="w-full xl:w-auto">
-            <div className={`backdrop-blur-sm rounded-xl p-4 border max-w-md mx-auto shadow-lg ${
+            <div className={`backdrop-blur-sm rounded-xl p-4 border max-w-md mx-auto shadow-xl ${
               theme === 'dark' 
                 ? 'bg-gray-800/95 border-gray-700' 
-                : 'bg-white/95 border-gray-200'
+                : 'bg-white/90 border-white/50 shadow-blue-200/50'
             }`}>
               <h2 className={`text-xl font-medium mb-4 text-center ${
                 theme === 'dark' ? 'text-gray-100' : 'text-gray-800'
