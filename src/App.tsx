@@ -41,27 +41,104 @@ function App() {
       <main className="flex-1 container mx-auto px-4 py-4">
         <div className="flex flex-col xl:flex-row items-start justify-center gap-2 max-w-5xl mx-auto">
 
-          {/* Color Wheel Section */}
-          <div className="w-full xl:w-auto">
-            <div className={`backdrop-blur-sm rounded-xl p-4 border max-w-md mx-auto shadow-xl ${
-              theme === 'dark' 
-                ? 'bg-gray-800/95 border-gray-700' 
-                : 'bg-white/90 border-white/50 shadow-blue-200/50'
-            }`}>
-              <h2 className={`text-xl font-medium mb-4 text-center ${
-                theme === 'dark' ? 'text-gray-100' : 'text-gray-800'
-              }`}>Interactive Color Wheel</h2>
-              <div className="w-full aspect-square max-w-[350px] mx-auto">
-                <ColorWheel
-                  selectedColor={selectedColor}
-                  onColorChange={setSelectedColor}
-                  onAnalogousColorsChange={setAnalogousColors}
-                />
+          {/* Left Column - Color Wheel and Additional Sections */}
+          <div className="w-full xl:w-auto space-y-2">
+            {/* Color Wheel Section */}
+            <div className="w-full">
+              <div className={`backdrop-blur-sm rounded-xl p-4 border max-w-md mx-auto shadow-xl ${
+                theme === 'dark' 
+                  ? 'bg-gray-800/95 border-gray-700' 
+                  : 'bg-white/90 border-white/50 shadow-blue-200/50'
+              }`}>
+                <h2 className={`text-xl font-medium mb-4 text-center ${
+                  theme === 'dark' ? 'text-gray-100' : 'text-gray-800'
+                }`}>Interactive Color Wheel</h2>
+                <div className="w-full aspect-square max-w-[350px] mx-auto">
+                  <ColorWheel
+                    selectedColor={selectedColor}
+                    onColorChange={setSelectedColor}
+                    onAnalogousColorsChange={setAnalogousColors}
+                  />
+                </div>
               </div>
             </div>
+
+            {/* Color Palette and Usage Tips - Only show when analogous colors exist */}
+            {analogousColors.length > 0 && (
+              <>
+                {/* Color Palette Preview */}
+                <div className={`backdrop-blur-sm rounded-2xl p-6 border shadow-xl max-w-md mx-auto ${
+                  theme === 'dark' 
+                    ? 'bg-gray-800/95 border-gray-700' 
+                    : 'bg-white/90 border-white/50 shadow-blue-200/50'
+                }`}>
+                  <h2 className={`text-2xl font-semibold mb-4 text-center ${
+                    theme === 'dark' ? 'text-gray-100' : 'text-gray-800'
+                  }`}>Color Palette</h2>
+                  <div className={`flex rounded-lg overflow-hidden shadow-lg border ${
+                    theme === 'dark' ? 'border-gray-600' : 'border-gray-300'
+                  }`}>
+                    <div
+                      className="flex-1 h-20"
+                      style={{ backgroundColor: analogousColors[0]?.hex }}
+                    />
+                    <div
+                      className="flex-1 h-20"
+                      style={{ backgroundColor: analogousColors[1]?.hex }}
+                    />
+                    <div
+                      className="flex-1 h-20"
+                      style={{ backgroundColor: selectedColor.hex }}
+                    />
+                    <div
+                      className="flex-1 h-20"
+                      style={{ backgroundColor: analogousColors[2]?.hex }}
+                    />
+                    <div
+                      className="flex-1 h-20"
+                      style={{ backgroundColor: analogousColors[3]?.hex }}
+                    />
+                  </div>
+                  <button
+                    onClick={() => {
+                      const palette = [
+                        analogousColors[0]?.hex,
+                        analogousColors[1]?.hex,
+                        selectedColor.hex,
+                        analogousColors[2]?.hex,
+                        analogousColors[3]?.hex
+                      ].filter(Boolean).join(', ');
+                      navigator.clipboard.writeText(palette);
+                    }}
+                    className="mt-4 w-full bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-400 text-white font-medium py-2 px-4 rounded-lg transition-colors"
+                  >
+                    Copy Palette (Hex Values)
+                  </button>
+                </div>
+
+                {/* Usage Tips */}
+                <div className={`backdrop-blur-sm rounded-2xl p-6 border shadow-xl max-w-md mx-auto ${
+                  theme === 'dark' 
+                    ? 'bg-gray-800/95 border-gray-700' 
+                    : 'bg-white/90 border-white/50 shadow-blue-200/50'
+                }`}>
+                  <h3 className={`text-lg font-semibold mb-3 ${
+                    theme === 'dark' ? 'text-gray-100' : 'text-gray-800'
+                  }`}>💡 Usage Tips</h3>
+                  <ul className={`text-sm space-y-2 ${
+                    theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
+                  }`}>
+                    <li>• Click and drag on the color wheel to select colors</li>
+                    <li>• Click any color value to copy it to clipboard</li>
+                    <li>• Analogous colors are naturally harmonious</li>
+                    <li>• Use these colors for gradients and themes</li>
+                  </ul>
+                </div>
+              </>
+            )}
           </div>
 
-          {/* Color Display Section */}
+          {/* Right Column - Selected Color and Analogous Colors */}
           <div className="w-full xl:w-auto">
             <ColorDisplay
               selectedColor={selectedColor}
