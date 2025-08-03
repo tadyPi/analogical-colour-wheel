@@ -168,10 +168,10 @@ const ColorWheel: React.FC<ColorWheelProps> = ({
   }, [updateCanvasSize]);
 
   return (
-    <div className="flex justify-center items-center p-4 w-full h-full min-h-[320px]">
+    <div className="flex justify-center items-center p-4 w-full h-full min-h-[320px] relative">
       <canvas
         ref={canvasRef}
-        className="cursor-crosshair rounded-full shadow-2xl max-w-full max-h-full"
+        className="cursor-crosshair rounded-full shadow-2xl max-w-full max-h-full relative z-10 transition-all duration-300 hover:shadow-3xl hover:scale-105"
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
