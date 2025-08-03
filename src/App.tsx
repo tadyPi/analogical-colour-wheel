@@ -259,7 +259,22 @@ function App() {
       <footer className={`mt-auto p-6 text-center ${
         theme === 'dark' ? 'text-gray-400' : 'text-gray-900'
       }`}>
-        <p>Built by Load of pixels using React, TypeScript, Vite, and Tailwind CSS</p>
+        <p>
+          Built by{' '}
+          <a 
+            href="https://loadofpixels.com" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className={`underline transition-colors ${
+              theme === 'dark' 
+                ? 'text-blue-400 hover:text-blue-300' 
+                : 'text-blue-600 hover:text-blue-800'
+            }`}
+          >
+            Load of pixels
+          </a>{' '}
+          using React, TypeScript, Vite, and Tailwind CSS
+        </p>
       </footer>
     </div>
   )
