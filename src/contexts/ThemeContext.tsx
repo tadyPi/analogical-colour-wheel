@@ -13,53 +13,26 @@ export const useTheme = (): ThemeContextType => {
 
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({
   children,
-  defaultTheme = 'system',
+  defaultTheme = 'light',
   storageKey = 'color-wheel-theme',
 }) => {
   const [theme, setTheme] = useState<Theme>(() => {
     if (typeof window !== 'undefined') {
       const stored = localStorage.getItem(storageKey) as Theme;
-      return stored || defaultTheme;
+      return stored === 'dark' || stored === 'light' ? stored : defaultTheme;
     }
     return defaultTheme;
   });
 
-  const [effectiveTheme, setEffectiveTheme] = useState<'light' | 'dark'>('dark');
-
   useEffect(() => {
     const root = window.document.documentElement;
     
-    const updateEffectiveTheme = () => {
-      let newEffectiveTheme: 'light' | 'dark';
-      
-      if (theme === 'system') {
-        newEffectiveTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-      } else {
-        newEffectiveTheme = theme;
-      }
-      
-      setEffectiveTheme(newEffectiveTheme);
-      
-      // Apply theme to document
-      root.classList.remove('light', 'dark');
-      root.classList.add(newEffectiveTheme);
-    };
-
-    updateEffectiveTheme();
-
-    // Listen for system theme changes
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    const handleChange = () => {
-      if (theme === 'system') {
-        updateEffectiveTheme();
-      }
-    };
-
-    mediaQuery.addEventListener('change', handleChange);
-    return () => mediaQuery.removeEventListener('change', handleChange);
-  }, [theme]);
-
-  useEffect(() => {
+    // Remove both classes first
+    root.classList.remove('light', 'dark');
+    // Add the current theme
+    root.classList.add(theme);
+    
+    // Save to localStorage
     localStorage.setItem(storageKey, theme);
   }, [theme, storageKey]);
 
@@ -68,18 +41,11 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
   };
 
   const toggleTheme = () => {
-    if (theme === 'light') {
-      setTheme('dark');
-    } else if (theme === 'dark') {
-      setTheme('system');
-    } else {
-      setTheme('light');
-    }
+    setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');
   };
 
   const value: ThemeContextType = {
     theme,
-    effectiveTheme,
     setTheme: handleSetTheme,
     toggleTheme,
   };

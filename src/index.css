@@ -5,6 +5,15 @@ html {
   color-scheme: light dark;
 }
 
+/* Ensure the html element gets the theme class */
+html.dark {
+  color-scheme: dark;
+}
+
+html.light {
+  color-scheme: light;
+}
+
 /* Smooth transitions for theme changes */
 * {
   transition-property: background-color, border-color, color, fill, stroke;

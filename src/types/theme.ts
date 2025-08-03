@@ -1,8 +1,7 @@
-export type Theme = 'light' | 'dark' | 'system';
+export type Theme = 'light' | 'dark';
 
 export interface ThemeContextType {
   theme: Theme;
-  effectiveTheme: 'light' | 'dark';
   setTheme: (theme: Theme) => void;
   toggleTheme: () => void;
 }
