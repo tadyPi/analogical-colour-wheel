@@ -265,10 +265,10 @@ function App() {
             href="https://loadofpixels.com" 
             target="_blank" 
             rel="noopener noreferrer"
-            className={`underline transition-colors ${
+            className={`font-semibold transition-colors ${
               theme === 'dark' 
-                ? 'text-blue-400 hover:text-blue-300' 
-                : 'text-blue-600 hover:text-blue-800'
+                ? 'text-gray-200 hover:text-white' 
+                : 'text-gray-800 hover:text-black'
             }`}
           >
             Load of pixels
