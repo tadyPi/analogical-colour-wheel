@@ -41,10 +41,10 @@ function App() {
       <main className="flex-1 container mx-auto px-4 py-4">
         <div className="flex flex-col xl:flex-row items-start justify-center gap-2 max-w-5xl mx-auto">
 
-          {/* Left Column - Color Wheel and Additional Sections */}
-          <div className="w-full xl:w-auto space-y-2">
+          {/* Left Column - Color Wheel Only */}
+          <div className="w-full xl:w-auto">
             {/* Color Wheel Section */}
-            <div className="w-full">
+            <div className="w-full mb-2">
               <div className={`backdrop-blur-sm rounded-xl p-4 border max-w-md mx-auto shadow-xl ${
                 theme === 'dark' 
                   ? 'bg-gray-800/95 border-gray-700' 
@@ -62,12 +62,20 @@ function App() {
                 </div>
               </div>
             </div>
+          </div>
+
+          {/* Right Column - All Color Information */}
+          <div className="w-full xl:w-auto">
+            <ColorDisplay
+              selectedColor={selectedColor}
+              analogousColors={analogousColors}
+            />
 
             {/* Color Palette and Usage Tips - Only show when analogous colors exist */}
             {analogousColors.length > 0 && (
-              <>
+              <div className="space-y-2 mt-2">
                 {/* Color Palette Preview */}
-                <div className={`backdrop-blur-sm rounded-2xl p-6 border shadow-xl max-w-md mx-auto ${
+                <div className={`backdrop-blur-sm rounded-2xl p-6 border shadow-xl max-w-md mx-auto xl:max-w-none ${
                   theme === 'dark' 
                     ? 'bg-gray-800/95 border-gray-700' 
                     : 'bg-white/90 border-white/50 shadow-blue-200/50'
@@ -117,7 +125,7 @@ function App() {
                 </div>
 
                 {/* Usage Tips */}
-                <div className={`backdrop-blur-sm rounded-2xl p-6 border shadow-xl max-w-md mx-auto ${
+                <div className={`backdrop-blur-sm rounded-2xl p-6 border shadow-xl max-w-md mx-auto xl:max-w-none ${
                   theme === 'dark' 
                     ? 'bg-gray-800/95 border-gray-700' 
                     : 'bg-white/90 border-white/50 shadow-blue-200/50'
@@ -134,16 +142,8 @@ function App() {
                     <li>• Use these colors for gradients and themes</li>
                   </ul>
                 </div>
-              </>
+              </div>
             )}
-          </div>
-
-          {/* Right Column - Selected Color and Analogous Colors */}
-          <div className="w-full xl:w-auto">
-            <ColorDisplay
-              selectedColor={selectedColor}
-              analogousColors={analogousColors}
-            />
           </div>
         </div>
       </main>
