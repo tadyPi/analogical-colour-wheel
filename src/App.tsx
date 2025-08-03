@@ -27,7 +27,7 @@ function App() {
     }`}>
       {/* Header */}
       <header className="p-6 text-center relative">
-        <div className="absolute top-4 right-4">
+        <div className="fixed top-4 right-4 z-50">
           <ThemeToggle />
         </div>
         <h1 className={`hidden lg:block text-2xl md:text-3xl font-normal ${

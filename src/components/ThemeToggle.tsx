@@ -17,10 +17,10 @@ const ThemeToggle: React.FC = () => {
   return (
     <button
       onClick={handleClick}
-      className={`inline-flex items-center gap-2 px-3 py-2 text-sm font-medium border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-200 shadow-sm ${
+      className={`inline-flex items-center gap-2 px-3 py-2 text-sm font-medium border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 backdrop-blur-sm ${
         isDark
-          ? 'text-gray-200 bg-gray-800/95 border-gray-600 hover:bg-gray-700/80 focus:ring-offset-gray-900'
-          : 'text-gray-700 bg-white/95 border-gray-300 hover:bg-gray-50 focus:ring-offset-white'
+          ? 'text-gray-200 bg-gray-800/95 border-gray-600 hover:bg-gray-700/90 focus:ring-offset-gray-900'
+          : 'text-gray-700 bg-white/95 border-gray-300 hover:bg-white focus:ring-offset-white'
       }`}
       aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
       title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
