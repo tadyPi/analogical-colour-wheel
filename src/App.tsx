@@ -257,7 +257,7 @@ function App() {
 
       {/* Footer */}
       <footer className={`mt-auto p-6 text-center ${
-        theme === 'dark' ? 'text-gray-400' : 'text-gray-500'
+        theme === 'dark' ? 'text-gray-400' : 'text-gray-700'
       }`}>
         <p>Built with React, TypeScript, Vite, and Tailwind CSS</p>
       </footer>
