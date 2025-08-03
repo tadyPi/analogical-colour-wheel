@@ -1,4 +1,6 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* Prevent flash of unstyled content */
 html {
@@ -10,13 +12,11 @@ html.dark {
   color-scheme: dark;
 }
 
-html.light {
-  color-scheme: light;
-}
-
 /* Smooth transitions for theme changes */
-* {
-  transition-property: background-color, border-color, color, fill, stroke;
+*,
+*::before,
+*::after {
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 200ms;
+  transition-duration: 300ms;
 }

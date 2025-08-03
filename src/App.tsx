@@ -32,8 +32,8 @@ function App() {
 
           {/* Color Wheel Section */}
           <div className="w-full xl:w-auto">
-            <div className="bg-white/80 dark:bg-gray-800/50 backdrop-blur-sm rounded-xl p-4 border border-gray-200 dark:border-gray-700 max-w-md mx-auto shadow-lg">
-              <h2 className="text-xl font-medium mb-4 text-center text-gray-800 dark:text-white">Interactive Color Wheel</h2>
+            <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-xl p-4 border border-gray-200 dark:border-gray-600 max-w-md mx-auto shadow-lg">
+              <h2 className="text-xl font-medium mb-4 text-center text-gray-800 dark:text-gray-100">Interactive Color Wheel</h2>
               <div className="w-full aspect-square max-w-[350px] mx-auto">
                 <ColorWheel
                   selectedColor={selectedColor}
