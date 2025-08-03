@@ -15,13 +15,13 @@ function App() {
   const [analogousColors, setAnalogousColors] = useState<Color[]>([])
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-white transition-colors">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-white transition-colors duration-300">
       {/* Header */}
       <header className="p-6 text-center relative">
         <div className="absolute top-4 right-4">
           <ThemeToggle />
         </div>
-        <h1 className="hidden lg:block text-2xl md:text-3xl font-normal text-gray-300">
+        <h1 className="hidden lg:block text-2xl md:text-3xl font-normal text-gray-600 dark:text-gray-300">
           Click or click and drag to explore harmonious color combinations
         </h1>
       </header>
