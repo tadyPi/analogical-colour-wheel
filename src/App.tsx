@@ -20,7 +20,7 @@ function App() {
   console.log('App component theme:', theme)
 
   return (
-    <div className={`min-h-screen transition-all duration-300 ${
+    <div className={`min-h-screen flex flex-col transition-all duration-300 ${
       theme === 'dark' 
         ? 'bg-gradient-to-br from-gray-900 to-gray-800 text-gray-100' 
         : 'bg-gradient-to-br from-blue-50 to-indigo-100 text-gray-900'
@@ -38,7 +38,7 @@ function App() {
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 container mx-auto px-4 py-4">
+      <main className="flex-1 container mx-auto px-4 py-4 pb-8">
         <div className="flex flex-col xl:flex-row items-start justify-center gap-2 max-w-5xl mx-auto">
         <div className="max-w-5xl mx-auto">
           {/* Desktop Layout (xl and above) */}
@@ -328,7 +328,7 @@ function App() {
       </main>
 
       {/* Footer */}
-      <footer className={`p-6 text-center ${
+      <footer className={`mt-auto p-6 text-center ${
         theme === 'dark' ? 'text-gray-400' : 'text-gray-500'
       }`}>
         <p>Built with React, TypeScript, Vite, and Tailwind CSS</p>
