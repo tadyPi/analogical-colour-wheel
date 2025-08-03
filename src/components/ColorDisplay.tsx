@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTheme } from '../contexts/ThemeContext';
 import type { Color } from '../types/color';
 
 interface ColorDisplayProps {
@@ -7,6 +8,8 @@ interface ColorDisplayProps {
 }
 
 const ColorDisplay: React.FC<ColorDisplayProps> = ({ selectedColor, analogousColors }) => {
+  const { theme } = useTheme();
+  
   const copyToClipboard = async (text: string) => {
     try {
       await navigator.clipboard.writeText(text);
@@ -25,27 +28,43 @@ const ColorDisplay: React.FC<ColorDisplayProps> = ({ selectedColor, analogousCol
     label,
     isMain = false
   }) => (
-    <div className={`bg-white/95 dark:bg-gray-700/95 rounded-xl p-4 border border-gray-200 dark:border-gray-600 transition-all hover:border-gray-300 dark:hover:border-gray-500 shadow-sm ${isMain ? 'ring-2 ring-blue-500 dark:ring-blue-400' : ''}`}>
+    <div className={`rounded-xl p-4 border transition-all shadow-sm ${
+      theme === 'dark' 
+        ? 'bg-gray-700/95 border-gray-600 hover:border-gray-500' 
+        : 'bg-white/95 border-gray-200 hover:border-gray-300'
+    } ${isMain ? (theme === 'dark' ? 'ring-2 ring-blue-400' : 'ring-2 ring-blue-500') : ''}`}>
       <div className="flex items-center gap-4">
         <div
-          className="w-16 h-16 rounded-lg border-2 border-gray-200 dark:border-gray-600 shadow-lg cursor-pointer transition-transform hover:scale-105"
+          className={`w-16 h-16 rounded-lg border-2 shadow-lg cursor-pointer transition-transform hover:scale-105 ${
+            theme === 'dark' ? 'border-gray-600' : 'border-gray-200'
+          }`}
           style={{ backgroundColor: color.hex }}
           onClick={() => copyToClipboard(color.hex)}
           title="Click to copy hex value"
         />
         <div className="flex-1">
-          <h3 className="font-semibold text-gray-800 dark:text-gray-100 mb-1">{label}</h3>
+          <h3 className={`font-semibold mb-1 ${
+            theme === 'dark' ? 'text-gray-100' : 'text-gray-800'
+          }`}>{label}</h3>
           <div className="space-y-1 text-sm">
             <button
               onClick={() => copyToClipboard(color.hex)}
-              className="block w-full text-left text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 transition-colors font-mono text-xs"
+              className={`block w-full text-left transition-colors font-mono text-xs ${
+                theme === 'dark' 
+                  ? 'text-gray-300 hover:text-gray-100' 
+                  : 'text-gray-600 hover:text-gray-900'
+              }`}
               title="Click to copy"
             >
               HEX: {color.hex}
             </button>
             <button
               onClick={() => copyToClipboard(formatHsl(color))}
-              className="block w-full text-left text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 transition-colors font-mono text-xs"
+              className={`block w-full text-left transition-colors font-mono text-xs ${
+                theme === 'dark' 
+                  ? 'text-gray-300 hover:text-gray-100' 
+                  : 'text-gray-600 hover:text-gray-900'
+              }`}
               title="Click to copy"
             >
               HSL: {formatHsl(color)}
@@ -59,15 +78,27 @@ const ColorDisplay: React.FC<ColorDisplayProps> = ({ selectedColor, analogousCol
   return (
     <div className="space-y-2">
       {/* Selected Color */}
-      <div className="bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm rounded-xl p-4 border border-gray-200 dark:border-gray-700 shadow-lg">
-        <h2 className="text-2xl font-semibold mb-4 text-center text-gray-800 dark:text-gray-100">Selected Color</h2>
+      <div className={`backdrop-blur-sm rounded-xl p-4 border shadow-lg ${
+        theme === 'dark' 
+          ? 'bg-gray-800/95 border-gray-700' 
+          : 'bg-white/95 border-gray-200'
+      }`}>
+        <h2 className={`text-2xl font-semibold mb-4 text-center ${
+          theme === 'dark' ? 'text-gray-100' : 'text-gray-800'
+        }`}>Selected Color</h2>
         <ColorSwatch color={selectedColor} label="Primary Color" isMain />
       </div>
 
       {/* Analogous Colors */}
       {analogousColors.length > 0 && (
-        <div className="bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 dark:border-gray-700 shadow-lg">
-          <h2 className="text-2xl font-semibold mb-4 text-center text-gray-800 dark:text-gray-100">Analogous Colors</h2>
+        <div className={`backdrop-blur-sm rounded-2xl p-6 border shadow-lg ${
+          theme === 'dark' 
+            ? 'bg-gray-800/95 border-gray-700' 
+            : 'bg-white/95 border-gray-200'
+        }`}>
+          <h2 className={`text-2xl font-semibold mb-4 text-center ${
+            theme === 'dark' ? 'text-gray-100' : 'text-gray-800'
+          }`}>Analogous Colors</h2>
           <div className="space-y-4">
             {analogousColors.map((color, index) => (
               <ColorSwatch
@@ -82,9 +113,17 @@ const ColorDisplay: React.FC<ColorDisplayProps> = ({ selectedColor, analogousCol
 
       {/* Color Palette Preview */}
       {analogousColors.length > 0 && (
-        <div className="bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 dark:border-gray-700 shadow-lg">
-          <h2 className="text-2xl font-semibold mb-4 text-center text-gray-800 dark:text-gray-100">Color Palette</h2>
-          <div className="flex rounded-lg overflow-hidden shadow-lg border border-gray-200 dark:border-gray-600">
+        <div className={`backdrop-blur-sm rounded-2xl p-6 border shadow-lg ${
+          theme === 'dark' 
+            ? 'bg-gray-800/95 border-gray-700' 
+            : 'bg-white/95 border-gray-200'
+        }`}>
+          <h2 className={`text-2xl font-semibold mb-4 text-center ${
+            theme === 'dark' ? 'text-gray-100' : 'text-gray-800'
+          }`}>Color Palette</h2>
+          <div className={`flex rounded-lg overflow-hidden shadow-lg border ${
+            theme === 'dark' ? 'border-gray-600' : 'border-gray-200'
+          }`}>
             <div
               className="flex-1 h-20"
               style={{ backgroundColor: analogousColors[0]?.hex }}
@@ -125,9 +164,17 @@ const ColorDisplay: React.FC<ColorDisplayProps> = ({ selectedColor, analogousCol
       )}
 
       {/* Usage Tips */}
-      <div className="bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 dark:border-gray-700 shadow-lg">
-        <h3 className="text-lg font-semibold mb-3 text-gray-800 dark:text-gray-100">💡 Usage Tips</h3>
-        <ul className="text-sm text-gray-600 dark:text-gray-400 space-y-2">
+      <div className={`backdrop-blur-sm rounded-2xl p-6 border shadow-lg ${
+        theme === 'dark' 
+          ? 'bg-gray-800/95 border-gray-700' 
+          : 'bg-white/95 border-gray-200'
+      }`}>
+        <h3 className={`text-lg font-semibold mb-3 ${
+          theme === 'dark' ? 'text-gray-100' : 'text-gray-800'
+        }`}>💡 Usage Tips</h3>
+        <ul className={`text-sm space-y-2 ${
+          theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
+        }`}>
           <li>• Click and drag on the color wheel to select colors</li>
           <li>• Click any color value to copy it to clipboard</li>
           <li>• Analogous colors are naturally harmonious</li>
