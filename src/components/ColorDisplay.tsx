@@ -81,7 +81,7 @@ const ColorDisplay: React.FC<ColorDisplayProps> = ({ selectedColor, analogousCol
       <div className={`backdrop-blur-sm rounded-xl p-4 border shadow-xl max-w-md mx-auto xl:max-w-none ${
         theme === 'dark' 
           ? 'bg-gray-800/95 border-gray-700' 
-          : 'bg-white/90 border-white/50 shadow-blue-200/50'
+          : 'bg-white/90 border-zinc-200 shadow-zinc-200'
       }`}>
         <h2 className={`text-2xl font-semibold mb-4 text-center ${
           theme === 'dark' ? 'text-gray-100' : 'text-gray-800'
@@ -94,7 +94,7 @@ const ColorDisplay: React.FC<ColorDisplayProps> = ({ selectedColor, analogousCol
         <div className={`backdrop-blur-sm rounded-2xl p-6 border shadow-xl max-w-md mx-auto xl:max-w-none ${
           theme === 'dark' 
             ? 'bg-gray-800/95 border-gray-700' 
-            : 'bg-white/90 border-white/50 shadow-blue-200/50'
+            : 'bg-white/90 border-zinc-200 shadow-zinc-200'
         }`}>
           <h2 className={`text-2xl font-semibold mb-4 text-center ${
             theme === 'dark' ? 'text-gray-100' : 'text-gray-800'
