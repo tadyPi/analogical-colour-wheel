@@ -23,7 +23,7 @@ function App() {
     <div className={`min-h-screen flex flex-col transition-all duration-300 ${
       theme === 'dark' 
         ? 'bg-gradient-to-br from-gray-900 to-gray-800 text-gray-100' 
-        : 'bg-gradient-to-br from-blue-200 to-indigo-100 text-gray-900'
+        : 'bg-gradient-to-br from-zinc-200 to-indigo-100 text-gray-900'
     }`}>
       {/* Header */}
       <header className="pt-8 pb-6 px-6 text-center relative">
