@@ -9,7 +9,7 @@ An interactive color wheel application for exploring harmonious color combinatio
 - **📋 Copy-to-Clipboard** - One-click copying of hex and HSL color values
 - **📱 Responsive Design** - Works seamlessly on desktop, tablet, and mobile devices
 - **🎯 Visual Color Palette** - Preview your color harmony with an integrated palette display
-- **💫 Modern UI** - Beautiful gradients, glass-morphism effects, and smooth animations
+- **💫 Modern UI** - Dark/light mode theme. Beautiful gradients and smooth animations
 
 ## 🚀 Tech Stack
 
