@@ -2,6 +2,16 @@
 
 An interactive color wheel application for exploring harmonious color combinations. Built with modern web technologies for designers and developers.
 
+Mobile
+<img width="414" height="790" alt="Screenshot 2025-08-04 160434" src="https://github.com/user-attachments/assets/d6bdb6bb-2825-4e70-8eb6-bba95ccceb2a" /> 
+<img width="395" height="714" alt="Screenshot 2025-08-04 160259" src="https://github.com/user-attachments/assets/492ea26a-6e68-4ae9-8ddb-a5901b79e652" />
+
+Desktop
+<img width="1890" height="845" alt="Screenshot 2025-08-06 155606" src="https://github.com/user-attachments/assets/873c8aba-9241-488c-b951-03052e2e3f90" />
+
+
+
+
 ## ✨ Features
 
 - **🎨 Interactive Color Wheel** - Click and drag to select colors from a smooth canvas-based color picker
