@@ -256,7 +256,7 @@ function App() {
       </main>
 
       {/* Footer */}
-      <footer className={`mt-auto p-6 text-center ${
+      <footer className={`mt-auto px-6 py-6 pb-3 text-center ${
         theme === 'dark' ? 'text-gray-400' : 'text-gray-900'
       }`}>
         <p>
