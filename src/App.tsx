@@ -33,7 +33,7 @@ function App() {
         <h1 className={`hidden lg:block text-2xl md:text-3xl font-normal mt-4 ${
           theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
         }`}>
-          Click or click and drag to explore harmonious color combinations
+          Click to explore harmonious color combinations
         </h1>
       </header>
 
@@ -54,7 +54,7 @@ function App() {
                 }`}>
                   <h2 className={`text-xl font-medium mb-4 text-center ${
                     theme === 'dark' ? 'text-gray-100' : 'text-gray-800'
-                  }`}>Interactive Color Wheel</h2>
+                  }`}>Analogical Color Wheel</h2>
                   <div className="w-full aspect-square max-w-[350px] mx-auto">
                     <ColorWheel
                       selectedColor={selectedColor}
@@ -265,7 +265,7 @@ function App() {
             href="https://loadofpixels.com" 
             target="_blank" 
             rel="noopener noreferrer"
-            className={`font-semibold underline transition-colors ${
+            className={`font-semibold text-zinc-500 underline transition-colors ${
               theme === 'dark' 
                 ? 'text-gray-200 hover:text-white' 
                 : 'text-gray-800 hover:text-black'
