@@ -2,14 +2,7 @@
 
 An interactive color wheel application for exploring harmonious color combinations. Built with modern web technologies for designers and developers.
 
-Mobile
-<img width="395" height="714" alt="Screenshot 2025-08-04 160259" src="https://github.com/user-attachments/assets/492ea26a-6e68-4ae9-8ddb-a5901b79e652" />
-
-Desktop
-<img width="1890" height="845" alt="Screenshot 2025-08-06 155606" src="https://github.com/user-attachments/assets/873c8aba-9241-488c-b951-03052e2e3f90" />
-
-
-
+<img width="1769" height="847" alt="analogical color wheel" src="https://github.com/user-attachments/assets/63f6c4c6-1e3d-416d-8d14-d836221f2986" />
 
 ## ✨ Features
 
