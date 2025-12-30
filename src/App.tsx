@@ -265,7 +265,7 @@ function App() {
             href="https://loadofpixels.com" 
             target="_blank" 
             rel="noopener noreferrer"
-            className={`font-semibold text-zinc-500 underline transition-colors ${
+            className={`font-semibold text-zinc-400 underline transition-colors ${
               theme === 'dark' 
                 ? 'text-gray-200 hover:text-white' 
                 : 'text-gray-800 hover:text-black'
